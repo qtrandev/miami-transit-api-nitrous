@@ -50,13 +50,14 @@ class MiamiDadeBusTranslator
 
         entity.vehicle = VehiclePosition.new.tap do |vp|
           vp.trip = TripDescriptor.new.tap do |trip|
-            trip.route_id = bus_hash['RouteID']
+#            trip.route_id = bus_hash['RouteID']
             trip.trip_id = bus_hash['TripID']
           end
           vp.position = Position.new.tap do |pos|
             pos.latitude = bus_hash['Latitude'].to_f
             pos.longitude = bus_hash['Longitude'].to_f
           end
+          vp.current_stop_sequence = 30
         end
       end
     end
