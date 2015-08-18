@@ -41,13 +41,24 @@ class MiamiDadeBusTranslator
         entity.id = "#{ bus_hash['BusID'] }_#{ bus_hash['BusName']}"
 
 
-#        entity.trip_update = TripUpdate.new.tap do |tu|
-#          tu.trip = TripDescriptor.new.tap do |trip|
-#            trip.route_id = bus_hash['RouteID']
-#            trip.trip_id = bus_hash['TripID']
-#          end
-#        end
+        entity.trip_update = TripUpdate.new.tap do |tu|
+          tu.trip = TripDescriptor.new.tap do |trip|
+            trip.route_id = bus_hash['RouteID']
+            trip.trip_id = bus_hash['TripID']
+          end
+          tu.stop_time_update = StopTimeUpdate.new.tap do |stu|
+            stu.stop_sequence = 1
+            stu.departure = DepartureDescriptor.new.tap do |dep|
+              dep.delay = 420
+            end
+            stu.stop_sequence = 30
+            stu.departure = DepartureDescriptor.new.tap do |dep|
+              dep.delay = 300
+            end
+          end
+        end
 
+=begin
         entity.vehicle = VehiclePosition.new.tap do |vp|
           vp.trip = TripDescriptor.new.tap do |trip|
             trip.route_id = bus_hash['RouteID']
@@ -59,6 +70,7 @@ class MiamiDadeBusTranslator
           end
           vp.current_stop_sequence = 30
         end
+=end
       end
     end
   end
