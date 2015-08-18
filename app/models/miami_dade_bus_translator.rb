@@ -46,6 +46,10 @@ class MiamiDadeBusTranslator
             trip.route_id = bus_hash['RouteID']
             trip.trip_id = bus_hash['TripID']
           end
+          tu.stop_time_update = TripDescriptor.new.tap do |trip|
+            trip.route_id = bus_hash['RouteID']
+            trip.trip_id = bus_hash['TripID']
+          end
 #          tu.stop_time_update = StopTimeUpdate.new.tap do |stu|
 #            stu.stop_sequence = 30
 #            stu.departure = TripUpdate::StopTimeEvent.new.tap do |dep|
