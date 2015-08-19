@@ -48,7 +48,7 @@ class MiamiDadeBusTranslator
           end
           tu.stop_time_update = TripDescriptor.new.tap do |trip|
             trip.route_id = 30
-            trip.trip_id = 31
+            trip.trip_idx = 31
           end
 #          tu.stop_time_update = TripDescriptor.new.tap do |trip|
 #            trip.stop_sequence = 30
